@@ -1,1 +1,1 @@
-# minnehackgoonteamkegelsquad
+# minnehackgoonteamsquad
