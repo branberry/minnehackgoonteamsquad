@@ -149,6 +149,8 @@ def userBucket(UAge, UHeight, UWeight):
 def getBenchTime(age, height, weight, symptoms):
     bucket = userBucket(age, height, weight)
     #load all data from our injuries file
+    symptomArr = symptoms.split(',')
+    numSymptoms = len(symptomArr)
     if os.stat(bucket).st_size==0:
         return "Sorry, we don't have enought data to make a safe recommendation"
     data = pd.read_csv(bucket)
@@ -181,8 +183,7 @@ def getBenchTime(age, height, weight, symptoms):
     import statsmodels.api as sm
     import matplotlib.pyplot as plt
     model = sm.OLS(Y,X).fit()
-    myBenchTime = int(round(model.predict(symptoms)[0]))
-    print(outcome_to_benchtime[myBenchTime])
+    myBenchTime = int(round(model.predict(numSymptoms)[0]))
     return outcome_to_benchtime[myBenchTime]
 
 # def runSimulation():

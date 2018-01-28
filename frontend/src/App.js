@@ -40,20 +40,20 @@ class App extends Component {
       console.log(d);
     });
 
-  fetch(url+'createUser/', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'X-CSRFToken': csrftoken
-  },
-  body: JSON.stringify({
-    name: 'Carlson Hang',
-    age: 15,
-    weight: 150,
-    height: 67,
-  })
-});
+  // fetch(url+'createUser/', {
+  // method: 'POST',
+  // headers: {
+  //   'Accept': 'application/json',
+  //   'Content-Type': 'application/json',
+  //   'X-CSRFToken': csrftoken
+  // },
+  // body: JSON.stringify({
+  //   name: 'Carlson Hang',
+  //   age: 15,
+  //   weight: 150,
+  //   height: 67,
+  // })
+// });
 
   fetch(url+'createInjury/', {
   method: 'POST',
@@ -63,7 +63,7 @@ class App extends Component {
     'X-CSRFToken': csrftoken
   },
   body: JSON.stringify({
-    user_id : 1,
+    user_id : 2,
     injury_type : "concussion",
     symptoms :  "Amnesia,Concentration difficulty,Confusion/disorientation,Dizziness/unsteadiness,Drowsiness",
     bench_date : "",
