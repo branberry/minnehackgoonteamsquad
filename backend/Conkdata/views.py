@@ -43,4 +43,6 @@ def createUser(request):
      u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
      u.name
+     system.path.append("minnehackgoonteamsquad/deepLearning/unbench.py")
+     import unBench()
      return HttpResponse("hi")
