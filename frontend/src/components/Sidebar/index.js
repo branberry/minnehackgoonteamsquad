@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import SidebarContent from './components/Sidebar/SidebarContent';
-import MaterialTitlePanel from './components/Sidebar/MaterialTitlePanel';
-import Player from './components/Player.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Sidebar from 'react-sidebar';
-import './App.css';
 
+import MaterialTitlePanel from './MaterialTitlePanel';
+import SidebarContent from './SidebarContent';
 
 const styles = {
   contentHeaderMenuLink: {
@@ -18,7 +16,7 @@ const styles = {
   },
 };
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,10 +50,6 @@ class App extends Component {
     }
   }
 
-  onSetOpen(open) {
-    this.setState({open: open});
-  }
-
   menuButtonClick(ev) {
     ev.preventDefault();
     this.onSetOpen(!this.state.open);
@@ -70,34 +64,34 @@ class App extends Component {
 
     return (
       <p key={prop}>
-        <input type="checkbox" onChange={toggleMethod} checked={this.state[prop]} id="prop"/>
+        <input type="checkbox" onChange={toggleMethod} checked={this.state[prop]} id={prop} />
         <label htmlFor={prop}> {prop}</label>
-      </p>
-    );
+      </p>);
   }
 
   renderPropNumber(prop) {
     const setMethod = (ev) => {
       const newState = {};
-      newState[prop] = parseInt(ev.target.value,10);
+      newState[prop] = parseInt(ev.target.value, 10);
       this.setState(newState);
     };
 
     return (
       <p key={prop}>
-        {prop} <input type="number" onChange={setMethod} value={this.state[prop]}/>
-      </p>
-    );
+         {prop} <input type="number" onChange={setMethod} value={this.state[prop]} />
+      </p>);
   }
+
   render() {
-    const sidebar = <SidebarContent/>;
+    const sidebar = <SidebarContent />;
 
     const contentHeader = (
       <span>
-        {!this.state.docked && <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
-        <span> Responsive React Sidebar</span>
-      </span>
-    );
+        {!this.state.docked &&
+         <a onClick={this.menuButtonClick} href="#" style={styles.contentHeaderMenuLink}>=</a>}
+        <span> React Sidebar</span>
+      </span>);
+
     const sidebarProps = {
       sidebar: sidebar,
       docked: this.state.docked,
@@ -112,34 +106,13 @@ class App extends Component {
       onSetOpen: this.onSetOpen,
     };
 
-    return(
-
-      <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Blockchain Addict</h1>
-          </header>
-          <div className="line-separator"></div>
-          <Sidebar {...sidebarProps}>
-          <MaterialTitlePanel>
-            <button onClick={this.toggleOpen}>Menu</button>
-          </MaterialTitlePanel>
-        </Sidebar>
-    
-      </div>
-
+    return (
+      <Sidebar {...sidebarProps}>
+        <MaterialTitlePanel title={contentHeader}>
+          <div style={styles.content}>
+          <button onClick={this.toggleOpen}>Menu</button>
+          </div>
+        </MaterialTitlePanel>
+      </Sidebar>
     );
   }
-}
-export default App;
-
-
-/*
-      <div className="App">
-        <header className="App-header">
-
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <h1> Player Profile</h1>
-        <Player/>
-      </div>    
-*/
