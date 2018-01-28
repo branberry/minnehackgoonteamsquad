@@ -186,20 +186,20 @@ def getBenchTime(age, height, weight, symptoms):
     myBenchTime = int(round(model.predict(numSymptoms)[0]))
     return outcome_to_benchtime[myBenchTime]
 
-# def runSimulation():
-#     run = True
-#     while(run):
-#         age = int(input("Please enter age: "))
-#         height = int(input("Please enter height: "))
-#         weight = int(input("Please enter weight: "))
-#         symp = int(input("Please enter num symptoms: "))
-#         if 14 < age < 19 and 48 <= height < 84 and 100 <= weight < 300:
-#             print(getBenchTime(age,height,weight, symp))
-#             cont = input("Want to check another? (y/n): ")
-#             if cont == 'n':
-#                 run = False
-#             elif cont != 'y':
-#                 print('Could not determine intentions... exiting.')
-#                 run = False
-#         else:
-#             print("Please check your inputs and try again.")
+def runSimulation():
+    run = True
+    while(run):
+        age = int(input("Please enter age: "))
+        height = int(input("Please enter height: "))
+        weight = int(input("Please enter weight: "))
+        symp = int(input("Please enter num symptoms: "))
+        if 14 < age < 19 and 48 <= height < 84 and 100 <= weight < 300:
+            print(getBenchTime(age,height,weight, symp))
+            cont = input("Want to check another? (y/n): ")
+            if cont == 'n':
+                run = False
+            elif cont != 'y':
+                print('Could not determine intentions... exiting.')
+                run = False
+        else:
+            print("Please check your inputs and try again.")

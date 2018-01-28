@@ -4953,10 +4953,3 @@ t39747,6-Nov-15,17,72,315,Male,#NULL!,concentration difficulty,#NULL!,dizziness/
 t225,23-Oct-09,17,76,315,Male,#NULL!,#NULL!,confusion/disorientation,#NULL!,#NULL!,headache,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,concussion,head/face,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,,<15 minutes,14,#NULL!
 t10174,11-Oct-10,14,70,320,Male,#NULL!,#NULL!,confusion/disorientation,dizziness/unsteadiness,drowsiness,headache,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,sensitive to light/visual disturbance,#NULL!,#NULL!,concussion,head/face,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,,1 week to 1 month,14,#NULL!
 t20050,13-Oct-16,15,72,340,Male,#NULL!,concentration difficulty,confusion/disorientation,dizziness/unsteadiness,drowsiness,headache,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,concussion,head/face,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,#NULL!,,10 days to 21 days,14,#NULL!
-1 |2018-01-27 11:07:02.110977+00:00| 18 70 230 Male headache nausea             concussion head/face |2018-01-28 18:10:28.345640+00:00| 6 
-1 |2018-01-27 11:07:02.110977+00:00| 18 70 230 Male headache nausea             concussion head/face |2018-01-28 18:11:32.443073+00:00| 6 
-1, 2018-01-27  11:07:02.110977+00:00 ,18,70,230,Male,headache,nausea,,,,,,,,,,,,,concussion,head/face, 2018-01-28  18:13:00.768765+00:00 ,6,
-1, 2018-01-27  11:07:02.110977+00:00 ,18,70,230,Male,headache,nausea,,,,,,,,,,,,,concussion,head/face, 2018-01-28  18:13:22.567919+00:00 ,6,
-1, 2018-01-27  11:07:02.110977+00:00 ,18,70,230,Male,headache,nausea,,,,,,,,,,,,,concussion,head/face, 2018-01-28  18:14:09.683321+00:00 ,6,
-1, 2018-01-27  11:07:02.110977+00:00 ,18,70,230,Male,headache,nausea,,,,,,,,,,,,,concussion,head/face, 2018-01-28  18:14:23.737320+00:00 ,6,
-1, 2018-01-27  11:07:02.110977+00:00 ,18,70,230,Male,headache,nausea,,,,,,,,,,,,,concussion,head/face, 2018-01-28  18:14:50.873118+00:00 ,6,

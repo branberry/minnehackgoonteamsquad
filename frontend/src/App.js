@@ -70,6 +70,22 @@ class App extends Component {
     unbench_date : ""
   })
 });
+
+fetch(url+'unBench/', {
+method: 'POST',
+headers: {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'X-CSRFToken': csrftoken
+},
+body: JSON.stringify({
+  user_id : 1,
+  injury_type : "concussion",
+  symptoms :  "Amnesia,Concentration difficulty,Confusion/disorientation,Dizziness/unsteadiness,Drowsiness",
+  bench_date : "",
+  unbench_date : ""
+})
+});
 }
 
   onSetOpen(open) {

@@ -4,9 +4,13 @@ from django.core.serializers import serialize
 from django.urls import reverse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+import pytz
 from .models import User, Injury
 
 from .learning import getBenchTime
+from .unbench import unbench
+
 import codecs
 import datetime
 
@@ -50,13 +54,24 @@ def createUser(request):
 
 @csrf_exempt
 def createInjury(request):
-     import unbench.py
      reader = codecs.getreader("utf-8")
      data = request.read().decode('utf-8')
      data = json.loads(data)
      u = User.objects.filter(user_id=data['user_id']).values()[0]
      print(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
-     i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=datetime.datetime.now())
+     i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=timezone.now(),unbench_date=timezone.now())
      i.save()
-     unbench(u,i)
      return HttpResponse("hi")
+
+@csrf_exempt
+def unBench(request):
+    reader = codecs.getreader("utf-8")
+    data = request.read().decode('utf-8')
+    data = json.loads(data)
+    i=Injury.objects.filter(user_id=data['user_id'])
+    i1=i.values()[len(i)-1]
+    j=Injury.objects.filter(bench_date=i1['bench_date']).update(unbench_date=timezone.now())
+    j1=Injury.objects.filter(bench_date=i1['bench_date']).values()[0]
+    u = User.objects.filter(user_id=data['user_id']).values()[0]
+    unbench(u,j1)
+    return HttpResponse("hi")
