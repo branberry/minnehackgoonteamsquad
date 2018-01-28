@@ -3,13 +3,13 @@
 #>append to correct bucket
 sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
-def unbench(userid):
-    def maketime(injurydate):
+def unbench(u):
+    def maketime(u[ID]):
         import time
         from time import mktime
         import datetime
         returnTime=time.gmtime()[:3]+(0,0,0,0,0,0)
-        new=injurydate[injurydate.find("-")+1:]
+        new=u[ID][u[ID].find("-")+1:]
         #make a time datetime object
         injurydate=(datetime.datetime(
         #Day
@@ -18,9 +18,9 @@ def unbench(userid):
         [0,'Jan','Feb','Mar','Apr','May','Jun','Jul',
          'Aug','Sep','Oct','Nov','Dec'].index(new[:new.find("-")]),
         #year
-        int(injurydate[:injurydate.find("-")]))).timetuple()
+        int(u[ID][:u[ID].find("-")]))).timetuple()
         #Convert to days
-        days=(mktime(returnTime)-mktime(injurydate))/86400
+        days=(mktime(returnTime)-mktime(u[ID]))/86400
         if days<1:
             return 13
         if days<3:
@@ -57,7 +57,7 @@ def unbench(userid):
              'concussion',
             'head/face',
              '',
-             maketime(injurydate),
+             maketime(u[ID]),
              '']
     
     import getBucket from learning.py
