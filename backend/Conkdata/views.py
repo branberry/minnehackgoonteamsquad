@@ -6,6 +6,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.csrf import csrf_exempt
 from .models import User, Injury
 import codecs
+import datetime
 
 import json
 
@@ -42,5 +43,13 @@ def createUser(request):
      print('----------------------------------')
      u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
-     u.name
      return HttpResponse("hi")
+
+@csrf_exempt
+def createInjury(request):
+     reader = codecs.getreader("utf-8")
+     data = request.read().decode('utf-8')
+     data = json.loads(data)
+     unbenchdate = ''
+     i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=unbenchdate)
+     return("hi")

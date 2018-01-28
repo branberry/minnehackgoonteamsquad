@@ -3,12 +3,12 @@ import SidebarContent from './components/Sidebar/SidebarContent';
 import MaterialTitlePanel from './components/Sidebar/MaterialTitlePanel';
 import Player from './components/Player.js';
 import Sidebar from 'react-sidebar';
-import { Button } from 'reactstrap';
+import {csrftoken }from './components/csrftoken';
+//import { Button } from 'reactstrap';
 import { HamburgerButton } from 'react-hamburger-button';
 import './App.css';
 
-
-
+const url = 'http://127.0.0.1:8000/conkdata/';
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class App extends Component {
       pullRight: false,
       touchHandleWidth: 20,
       dragToggleDistance: 30,
+      player: {}
     };
 
     this.renderPropCheckbox = this.renderPropCheckbox.bind(this);
@@ -31,6 +32,29 @@ class App extends Component {
     this.menuButtonClick = this.menuButtonClick.bind(this);
     this.toggleOpen = this.toggleOpen.bind(this);
   }
+
+  componentDidMount() {
+    fetch(url+'getInjuries/')
+    .then(response => response.json())
+    .then(d => {
+      console.log(d);
+    });
+
+  fetch(url+'createUser/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'X-CSRFToken': csrftoken
+  },
+  body: JSON.stringify({
+    name: 'Carlson Hang',
+    age: 15,
+    weight: 150,
+    height: 67,
+  })
+});
+}
 
   onSetOpen(open) {
     this.setState({open: open});
