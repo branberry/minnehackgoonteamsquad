@@ -3,20 +3,13 @@ import React, { Component } from 'react';
 import '../styles/Player.css';
 
 export default class Player extends Component {
-    constructor(props) {
-        super(props); 
-        this.state = {
-            playerName: 'Adrian Peterson',
-            playerId: 0,
-            playerHistory: {}
-        }
-    }
 
     render() {
         return(
             <div>
-                <h2>{this.state.playerName}</h2>
-
+                <h3>Player: {this.props.playerName}</h3>
+                <h3>Current Injury: {this.props.curInjury}</h3>
+                <h3> Injury History: </h3>
             </div>
         );
     }

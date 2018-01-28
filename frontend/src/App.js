@@ -4,6 +4,7 @@ import MaterialTitlePanel from './components/Sidebar/MaterialTitlePanel';
 import Player from './components/Player.js';
 import Sidebar from 'react-sidebar';
 import { Button } from 'reactstrap';
+import { HamburgerButton } from 'react-hamburger-button';
 import './App.css';
 
 
@@ -102,12 +103,15 @@ class App extends Component {
         </header>
         <Sidebar {...sidebarProps}>
         <MaterialTitlePanel>
-
+         
         </MaterialTitlePanel>
-      </Sidebar>
-      <Button color="primary" onClick={this.toggleOpen}>Menu</Button>
+        <HamburgerButton className="App-menuButton" open={this.state.open} onClick={this.toggleOpen}>Menu</HamburgerButton>
+  
+
+      
+        </Sidebar>
         <h1> Player Profile</h1>
-        <Player/>
+        <Player playerName='Adrian Peterson' curInjury='Mild Concussion'/>
       </div>   
       
       
