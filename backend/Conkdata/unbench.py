@@ -8,7 +8,6 @@ def unbench(u):
         import time
         from time import mktime
         import datetime
-        returnTime=time.gmtime()[:3]+(0,0,0,0,0,0)
         new=injurydate[injurydate.find("-")+1:]
         #make a time datetime object
         injurydate=(datetime.datetime(
@@ -20,7 +19,7 @@ def unbench(u):
         #year
         int(injurydate[:injurydate.find("-")]))).timetuple()
         #Convert to days
-        days=(mktime(returnTime)-mktime(injurydate))/86400
+        days=(mktime(time.gmtime())-mktime(injurydate))/86400
         if days<1:
             return 13
         if days<3:
