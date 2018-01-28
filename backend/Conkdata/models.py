@@ -8,6 +8,8 @@ class User(models.Model):
     height = models.IntegerField()
     user_id = models.IntegerField()
     bucket_name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
 
 class Injury(models.Model):
     user_id = models.IntegerField()
@@ -15,3 +17,4 @@ class Injury(models.Model):
     symptoms = models.CharField(max_length=400)
     bench_date = models.DateTimeField('date benched')
     unbench_date = models.DateTimeField('date unbenched')
+
