@@ -8,8 +8,6 @@ from django.utils import timezone
 import pytz
 from .models import User, Injury
 
-<<<<<<< HEAD
-=======
 from .learning import getBenchTime
 from .unbench import unbench
 
