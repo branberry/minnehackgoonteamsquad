@@ -6,7 +6,6 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.csrf import csrf_exempt
 from .models import User, Injury
 
-from .learning import getBenchTime
 import codecs
 import datetime
 
