@@ -15,7 +15,7 @@ import json
 def index(request):
     return HttpResponse("You are at the index")
 
-def getUser(request, uid):  
+def getUser(request, uid):
     result = User.objects.filter(user_id=uid)
     return HttpResponse(serialize('json',result))
 
@@ -35,17 +35,17 @@ def createUser(request):
      reader = codecs.getreader("utf-8")
      data = request.read().decode('utf-8')
      data = json.loads(data)
-     print('----------------------------------')
-     print()
-     print(type(data))
-     print()
-     for k,v in data.items():
-         print(k,v)
-         print(type(k))
-     print('----------------------------------')
+     # print('----------------------------------')
+     # print()
+     # print(type(data))
+     # print()
+     # for k,v in data.items():
+     #     print(k,v)
+     #     print(type(k))
+     # print('----------------------------------')
      u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
- 
+
      return HttpResponse("hi")
 
 @csrf_exempt
@@ -53,6 +53,7 @@ def createInjury(request):
      reader = codecs.getreader("utf-8")
      data = request.read().decode('utf-8')
      data = json.loads(data)
-     unbenchdate = ''
-     i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=unbenchdate)
+     u = User.objects.filter(user_id=data['user_id']).values()[0]
+     print(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
+     i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=None)
      return HttpResponse("hi")

@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
+import os
+#path = '/Conkdata/'
 
 bucket_to_CSV = {
     0:"15_short_light.csv",
@@ -109,6 +111,7 @@ def getBucket(thisRow):
 
 def userBucket(UAge, UHeight, UWeight):
     # load all data from our injuries file
+
     data = pd.read_csv("MasterConcussionData.csv")
     # set X and Y where X is our data classifiers (age, weight and height) and Y (return time) is the predition
     X_raw = data.iloc[:, 2:5].values
@@ -146,8 +149,11 @@ def userBucket(UAge, UHeight, UWeight):
 def getBenchTime(age, height, weight, symptoms):
     bucket = userBucket(age, height, weight)
     #load all data from our injuries file
+    if os.stat(bucket).st_size==0:
+        return "Sorry, we don't have enought data to make a safe recommendation"
     data = pd.read_csv(bucket)
     X_raw_np = data.iloc[:, 6:19].values
+
     Y_raw = data.iloc[:, 23].values
     doc_raw = data.iloc[:, 23].values
     X_raw_list = X_raw_np.tolist()
@@ -176,6 +182,7 @@ def getBenchTime(age, height, weight, symptoms):
     import matplotlib.pyplot as plt
     model = sm.OLS(Y,X).fit()
     myBenchTime = int(round(model.predict(symptoms)[0]))
+    print(outcome_to_benchtime[myBenchTime])
     return outcome_to_benchtime[myBenchTime]
 
 # def runSimulation():

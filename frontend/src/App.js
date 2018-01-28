@@ -54,6 +54,22 @@ class App extends Component {
     height: 67,
   })
 });
+
+  fetch(url+'createInjury/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'X-CSRFToken': csrftoken
+  },
+  body: JSON.stringify({
+    user_id : 1,
+    injury_type : "concussion",
+    symptoms :  "Amnesia,Concentration difficulty,Confusion/disorientation,Dizziness/unsteadiness,Drowsiness",
+    bench_date : "",
+    unbench_date : ""
+  })
+});
 }
 
   onSetOpen(open) {
@@ -131,7 +147,7 @@ class App extends Component {
 
 
       </Sidebar>
-      
+
         <header className="App-header">
         <HamburgerButton className="App-menuButton"
          open={this.state.open} onClick={this.toggleOpen}
