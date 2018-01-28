@@ -3,7 +3,7 @@
 #>append to correct bucket
 sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
-def unbench(userid):
+def unbench(u):
     def maketime(injurydate):
         import time
         from time import mktime
@@ -34,31 +34,31 @@ def unbench(userid):
         else:
             return 5
 
-    thisRow=['RegID',
-             'Q7',
-             'Q4',
-             'Q5',
-             'Q6',
-            'Q500',
-             'Q21B',
-             'Q21C',
-             'Q21D',
-            'Q21E',
-             'Q21F',
-             'Q21G',
-             'Q21H',
-            'Q21I',
-             'Q21J',
-             'Q21K',
-             'Q21L',
-            'Q21M',
-             'Q21N',
-             'Q21O',
-             'Q20',
-            'Q18',
-             'Q22',
-             maketime(injurydate),
-             'Q65']
+    thisRow=['u[0]',
+             'u[1]',
+             'u[2]',
+             'u[3]',
+             'u[4]',
+            'Male',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             'concussion',
+            'head/face',
+             '',
+             maketime(u[1]),
+             '']
     
     import getBucket from learning.py
     bucket=getBucket(thisRow)
