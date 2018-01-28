@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.csrf import csrf_exempt
 from .models import User, Injury
+
+from .learning import getBenchTime
 import codecs
 import datetime
 
@@ -43,7 +45,7 @@ def createUser(request):
      print('----------------------------------')
      u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
-<<<<<<< HEAD
+ 
      return HttpResponse("hi")
 
 @csrf_exempt
