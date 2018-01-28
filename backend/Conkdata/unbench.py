@@ -3,7 +3,7 @@
 #>append to correct bucket
 sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
-def unbench(u):
+def unbench(u,i):
     def maketime(injurydate):
         import time
         from time import mktime
@@ -11,7 +11,6 @@ def unbench(u):
         new=injurydate[injurydate.find("-")+1:]
         #make a time datetime object
         injurydate=(datetime.datetime(
-        #Day
         2000+int(new[new.find("-")+1:]),
         #month
         [0,'Jan','Feb','Mar','Apr','May','Jun','Jul',
@@ -32,18 +31,18 @@ def unbench(u):
             return 4
         else:
             return 5
-
-    thisRow=['u[0]',
-             'u[1]',
-             'u[2]',
-             'u[3]',
-             'u[4]',
-            'Male',
-             u[symptoms],
+        
+        thisRow=[i["user_id"],
+             i["bench_date"],
+             u["age"],
+             u["weight"],
+             u["height"],
+             'Male',
+             u["symptoms"],
              'concussion',
             'head/face',
              '',
-             maketime(u[1]),
+             maketime(i["bench_date"]),
              '']
     
     import getBucket from learning.py
