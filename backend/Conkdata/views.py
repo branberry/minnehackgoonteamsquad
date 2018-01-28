@@ -43,7 +43,7 @@ def createUser(request):
          print(k,v)
          print(type(k))
      print('----------------------------------')
-     u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
+     u = User(name=data['name'],injury_date=data['injury_date'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
  
      return HttpResponse("hi")
