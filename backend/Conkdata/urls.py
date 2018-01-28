@@ -9,4 +9,6 @@ urlpatterns = [
     path('getInjury/<int:uid>/',views.getInjury,name='getInjury'),
     path('getInjuries/',views.getInjuries,name='getInjuries'),
     path('createUser/',views.createUser,name='createUser'),
+    path('createInjury/',views.createInjury,name='createInjury'),
+    path('unBench/',views.unBench,name='unBench'),
 ]

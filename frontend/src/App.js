@@ -40,7 +40,22 @@ class App extends Component {
       console.log(d);
     });
 
-  fetch(url+'createUser/', {
+  // fetch(url+'createUser/', {
+  // method: 'POST',
+  // headers: {
+  //   'Accept': 'application/json',
+  //   'Content-Type': 'application/json',
+  //   'X-CSRFToken': csrftoken
+  // },
+  // body: JSON.stringify({
+  //   name: 'Carlson Hang',
+  //   age: 15,
+  //   weight: 150,
+  //   height: 67,
+  // })
+// });
+
+  fetch(url+'createInjury/', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -48,11 +63,28 @@ class App extends Component {
     'X-CSRFToken': csrftoken
   },
   body: JSON.stringify({
-    name: 'Carlson Hang',
-    age: 15,
-    weight: 150,
-    height: 67,
+    user_id : 2,
+    injury_type : "concussion",
+    symptoms :  "Amnesia,Concentration difficulty,Confusion/disorientation,Dizziness/unsteadiness,Drowsiness",
+    bench_date : "",
+    unbench_date : ""
   })
+});
+
+fetch(url+'unBench/', {
+method: 'POST',
+headers: {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'X-CSRFToken': csrftoken
+},
+body: JSON.stringify({
+  user_id : 1,
+  injury_type : "concussion",
+  symptoms :  "Amnesia,Concentration difficulty,Confusion/disorientation,Dizziness/unsteadiness,Drowsiness",
+  bench_date : "",
+  unbench_date : ""
+})
 });
 }
 
@@ -131,7 +163,7 @@ class App extends Component {
 
 
       </Sidebar>
-      
+
         <header className="App-header">
         <HamburgerButton className="App-menuButton"
          open={this.state.open} onClick={this.toggleOpen}

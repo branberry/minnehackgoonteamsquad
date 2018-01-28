@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
+import os
+#path = '/Conkdata/'
 
 bucket_to_CSV = {
     0:"15_short_light.csv",
@@ -109,6 +111,7 @@ def getBucket(thisRow):
 
 def userBucket(UAge, UHeight, UWeight):
     # load all data from our injuries file
+
     data = pd.read_csv("MasterConcussionData.csv")
     # set X and Y where X is our data classifiers (age, weight and height) and Y (return time) is the predition
     X_raw = data.iloc[:, 2:5].values
@@ -146,8 +149,13 @@ def userBucket(UAge, UHeight, UWeight):
 def getBenchTime(age, height, weight, symptoms):
     bucket = userBucket(age, height, weight)
     #load all data from our injuries file
+    symptomArr = symptoms.split(',')
+    numSymptoms = len(symptomArr)
+    if os.stat(bucket).st_size==0:
+        return "Sorry, we don't have enought data to make a safe recommendation"
     data = pd.read_csv(bucket)
     X_raw_np = data.iloc[:, 6:19].values
+
     Y_raw = data.iloc[:, 23].values
     doc_raw = data.iloc[:, 23].values
     X_raw_list = X_raw_np.tolist()
@@ -175,23 +183,23 @@ def getBenchTime(age, height, weight, symptoms):
     import statsmodels.api as sm
     import matplotlib.pyplot as plt
     model = sm.OLS(Y,X).fit()
-    myBenchTime = int(round(model.predict(symptoms)[0]))
+    myBenchTime = int(round(model.predict(numSymptoms)[0]))
     return outcome_to_benchtime[myBenchTime]
 
-# def runSimulation():
-#     run = True
-#     while(run):
-#         age = int(input("Please enter age: "))
-#         height = int(input("Please enter height: "))
-#         weight = int(input("Please enter weight: "))
-#         symp = int(input("Please enter num symptoms: "))
-#         if 14 < age < 19 and 48 <= height < 84 and 100 <= weight < 300:
-#             print(getBenchTime(age,height,weight, symp))
-#             cont = input("Want to check another? (y/n): ")
-#             if cont == 'n':
-#                 run = False
-#             elif cont != 'y':
-#                 print('Could not determine intentions... exiting.')
-#                 run = False
-#         else:
-#             print("Please check your inputs and try again.")
+def runSimulation():
+    run = True
+    while(run):
+        age = int(input("Please enter age: "))
+        height = int(input("Please enter height: "))
+        weight = int(input("Please enter weight: "))
+        symp = int(input("Please enter num symptoms: "))
+        if 14 < age < 19 and 48 <= height < 84 and 100 <= weight < 300:
+            print(getBenchTime(age,height,weight, symp))
+            cont = input("Want to check another? (y/n): ")
+            if cont == 'n':
+                run = False
+            elif cont != 'y':
+                print('Could not determine intentions... exiting.')
+                run = False
+        else:
+            print("Please check your inputs and try again.")

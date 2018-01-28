@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn import preprocessing
 
+path = '/Conkdata/deepLearning/'
+
 bucket_to_CSV = {
     0:"15_short_light.csv",
     1:"15_short_heavy.csv",
@@ -109,7 +111,10 @@ def getBucket(thisRow):
 
 def userBucket(UAge, UHeight, UWeight):
     # load all data from our injuries file
-    data = pd.read_csv("MasterConcussionData.csv")
+    absPath = ""
+    absPath += path
+    absPath += "MasterConcussionData.csv"
+    data = pd.read_csv(absPath)
     # set X and Y where X is our data classifiers (age, weight and height) and Y (return time) is the predition
     X_raw = data.iloc[:, 2:5].values
     Xlist = []
@@ -144,9 +149,15 @@ def userBucket(UAge, UHeight, UWeight):
     return bucket_to_CSV[myBucket]
 
 def getBenchTime(age, height, weight, symptoms):
+    print(age)
+    print(height)
+    print(weight)
     bucket = userBucket(age, height, weight)
     #load all data from our injuries file
-    data = pd.read_csv(bucket)
+    absPath = ""
+    absPath += path
+    absPath += bucket
+    data = pd.read_csv(absPath)
     X_raw_np = data.iloc[:, 6:19].values
     Y_raw = data.iloc[:, 23].values
     doc_raw = data.iloc[:, 23].values
@@ -176,6 +187,7 @@ def getBenchTime(age, height, weight, symptoms):
     import matplotlib.pyplot as plt
     model = sm.OLS(Y,X).fit()
     myBenchTime = int(round(model.predict(symptoms)[0]))
+    print(outcome_to_benchtime[myBenchTime])
     return outcome_to_benchtime[myBenchTime]
 
 # def runSimulation():
