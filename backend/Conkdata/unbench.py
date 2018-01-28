@@ -3,12 +3,11 @@
 #>append to correct bucket
 sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
-def unbench(userid):
+def unbench(u):
     def maketime(injurydate):
         import time
         from time import mktime
         import datetime
-        returnTime=time.gmtime()[:3]+(0,0,0,0,0,0)
         new=injurydate[injurydate.find("-")+1:]
         #make a time datetime object
         injurydate=(datetime.datetime(
@@ -20,7 +19,7 @@ def unbench(userid):
         #year
         int(injurydate[:injurydate.find("-")]))).timetuple()
         #Convert to days
-        days=(mktime(returnTime)-mktime(injurydate))/86400
+        days=(mktime(time.gmtime())-mktime(injurydate))/86400
         if days<1:
             return 13
         if days<3:
@@ -34,31 +33,18 @@ def unbench(userid):
         else:
             return 5
 
-    thisRow=['RegID',
-             'Q7',
-             'Q4',
-             'Q5',
-             'Q6',
-            'Q500',
-             'Q21B',
-             'Q21C',
-             'Q21D',
-            'Q21E',
-             'Q21F',
-             'Q21G',
-             'Q21H',
-            'Q21I',
-             'Q21J',
-             'Q21K',
-             'Q21L',
-            'Q21M',
-             'Q21N',
-             'Q21O',
-             'Q20',
-            'Q18',
-             'Q22',
-             maketime(injurydate),
-             'Q65']
+    thisRow=['u[0]',
+             'u[1]',
+             'u[2]',
+             'u[3]',
+             'u[4]',
+            'Male',
+             u[symptoms],
+             'concussion',
+            'head/face',
+             '',
+             maketime(u[1]),
+             '']
     
     import getBucket from learning.py
     bucket=getBucket(thisRow)

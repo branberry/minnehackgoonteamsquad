@@ -56,4 +56,5 @@ def createInjury(request):
      u = User.objects.filter(user_id=data['user_id']).values()[0]
      print(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
      i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=None)
+     i.save()
      return HttpResponse("hi")
