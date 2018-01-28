@@ -11,7 +11,6 @@ from .models import User, Injury
 from .learning import getBenchTime
 from .unbench import unbench
 
->>>>>>> 2a6d2bab6b0ada4dc09e894609b885e0ce475795
 import codecs
 import datetime
 
