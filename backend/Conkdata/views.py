@@ -44,5 +44,6 @@ def createUser(request):
      u.save()
      u.name
      system.path.append("minnehackgoonteamsquad/deepLearning/unbench.py")
-     import unBench()
+     import unbench
      return HttpResponse("hi")
+     unbench(u)
