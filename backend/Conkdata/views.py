@@ -60,11 +60,11 @@ def createInjury(request):
      reader = codecs.getreader("utf-8")
      data = request.read().decode('utf-8')
      data = json.loads(data)
-     u = User.objects.filter(user_id=data['user_id']).values()[0]
-     print(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
+     usser = User.objects.filter(user_id=data['user_id']).values()[0]
+     u = data
      i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=timezone.now(),unbench_date=timezone.now())
      i.save()
-     return HttpResponse("hi")
+     return HttpResponse(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
 
 @csrf_exempt
 def unBench(request):
