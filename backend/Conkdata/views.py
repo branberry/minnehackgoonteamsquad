@@ -43,6 +43,7 @@ def createUser(request):
      print('----------------------------------')
      u = User(name=data['name'],age=int(data['age']),weight=int(data['weight']),height=int(data['height']),user_id=new_id,bucket_name='')
      u.save()
+<<<<<<< HEAD
      return HttpResponse("hi")
 
 @csrf_exempt
@@ -52,4 +53,10 @@ def createInjury(request):
      data = json.loads(data)
      unbenchdate = ''
      i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=unbenchdate)
-     return("hi")
+=======
+     u.name
+     system.path.append("minnehackgoonteamsquad/deepLearning/unbench.py")
+     import unbench
+     return HttpResponse("hi")
+     unbench(u)
+>>>>>>> ab61a74c7b9df288ca0d2d8624c05e91ad756eea
