@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import SidebarContent from './components/Sidebar/SidebarContent';
 import MaterialTitlePanel from './components/Sidebar/MaterialTitlePanel';
 import Player from './components/Player.js';
 import Sidebar from 'react-sidebar';
+import { Button } from 'reactstrap';
 import './App.css';
 
 
-const styles = {
-  contentHeaderMenuLink: {
-    textDecoration: 'none',
-    color: 'white',
-    padding: 8,
-  },
-  content: {
-    padding: '16px',
-  },
-};
+
 
 class App extends Component {
   constructor(props) {
@@ -50,10 +41,6 @@ class App extends Component {
     if (ev) {
       ev.preventDefault();
     }
-  }
-
-  onSetOpen(open) {
-    this.setState({open: open});
   }
 
   menuButtonClick(ev) {
@@ -92,12 +79,6 @@ class App extends Component {
   render() {
     const sidebar = <SidebarContent/>;
 
-    const contentHeader = (
-      <span>
-        {!this.state.docked && <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
-        <span> Responsive React Sidebar</span>
-      </span>
-    );
     const sidebarProps = {
       sidebar: sidebar,
       docked: this.state.docked,
@@ -115,17 +96,22 @@ class App extends Component {
     return(
 
       <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Blockchain Addict</h1>
-          </header>
-          <div className="line-separator"></div>
-          <Sidebar {...sidebarProps}>
-          <MaterialTitlePanel>
-            <button onClick={this.toggleOpen}>Menu</button>
-          </MaterialTitlePanel>
-        </Sidebar>
-    
-      </div>
+        <header className="App-header">
+
+          <h1 className="App-title">Injury Monitor</h1>
+        </header>
+        <Sidebar {...sidebarProps}>
+        <MaterialTitlePanel>
+
+        </MaterialTitlePanel>
+      </Sidebar>
+      <Button color="primary" onClick={this.toggleOpen}>Menu</Button>
+        <h1> Player Profile</h1>
+        <Player/>
+      </div>   
+      
+      
+
 
     );
   }
@@ -141,5 +127,22 @@ export default App;
         </header>
         <h1> Player Profile</h1>
         <Player/>
-      </div>    
+      </div>   
+      
+      
+
+
+      <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Blockchain Addict</h1>
+          </header>
+          <div className="line-separator"></div>
+          <Sidebar {...sidebarProps}>
+          <MaterialTitlePanel>
+            <button onClick={this.toggleOpen}>Menu</button>
+          </MaterialTitlePanel>
+        </Sidebar>
+    
+      </div>
+
 */

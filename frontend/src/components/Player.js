@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+
 import '../styles/Player.css';
 
 export default class Player extends Component {
