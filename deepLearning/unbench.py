@@ -1,6 +1,7 @@
 #Import database entry that user inputs
 #>function called unbench()
 #>append to correct bucket
+sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
 def unbench(userid):
     def maketime(injurydate):
@@ -33,32 +34,32 @@ def unbench(userid):
         else:
             return 5
 
-thisRow=['RegID',
-         'Q7',
-         'Q4',
-         'Q5',
-         'Q6',
-        'Q500',
-         'Q21B',
-         'Q21C',
-         'Q21D',
-        'Q21E',
-         'Q21F',
-         'Q21G',
-         'Q21H',
-        'Q21I',
-         'Q21J',
-         'Q21K',
-         'Q21L',
-        'Q21M',
-         'Q21N',
-         'Q21O',
-         'Q20',
-        'Q18',
-         'Q22',
-         maketime(injurydate),
-         'Q65']
-import getBucket from learning.py
-bucket=getBucket(thisRow)
-#append to bucket
-#append to main csv
+    thisRow=['RegID',
+             'Q7',
+             'Q4',
+             'Q5',
+             'Q6',
+            'Q500',
+             'Q21B',
+             'Q21C',
+             'Q21D',
+            'Q21E',
+             'Q21F',
+             'Q21G',
+             'Q21H',
+            'Q21I',
+             'Q21J',
+             'Q21K',
+             'Q21L',
+            'Q21M',
+             'Q21N',
+             'Q21O',
+             'Q20',
+            'Q18',
+             'Q22',
+             maketime(injurydate),
+             'Q65']
+    import getBucket from learning.py
+    bucket=getBucket(thisRow)
+    #append to bucket
+    #append to main csv
