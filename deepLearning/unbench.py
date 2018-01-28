@@ -62,4 +62,34 @@ def unbench(userid):
     import getBucket from learning.py
     bucket=getBucket(thisRow)
     #append to bucket
+    bucketDict=[0:"15_short_light.csv",
+    1:"15_short_heavy.csv",
+    2:"15_medium_light.csv",
+    3:"15_medium_heavy.csv",
+    4:"15_tall_light.csv",
+    5:"15_tall_heavy.csv",
+    6:"16_short_light.csv",
+    7:"16_short_heavy.csv",
+    8:"16_medium_light.csv",
+    9:"16_medium_heavy.csv",
+    10:"16_tall_light.csv",
+    11:"16_tall_heavy.csv",
+    12:"17_short_light.csv",
+    13:"17_short_heavy.csv",
+    14:"17_medium_light.csv",
+    15:"17_medium_heavy.csv",
+    16:"17_tall_light.csv",
+    17:"17_tall_heavy.csv",
+    18:"18_short_light.csv",
+    19:"18_short_heavy.csv",
+    20:"18_medium_light.csv",
+    21:"18_medium_heavy.csv",
+    22:"18_tall_light.csv",
+    23:"18_tall_heavy.csv"]
+    with open(bucketDict[bucket],'a+') as csvout:
+                        spamwriter = csv.DictWriter(csvout, fieldnames=fields)
+                        spamwriter.writerow(thisRow)
+    with open(#main csv,'a+') as csvout:
+                        spamwriter = csv.DictWriter(csvout, fieldnames=fields)
+                        spamwriter.writerow(thisRow)
     #append to main csv
