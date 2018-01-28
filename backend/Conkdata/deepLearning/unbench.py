@@ -3,13 +3,13 @@
 #>append to correct bucket
 sys.path.append(minnehackgoonteamsquad/deepLearning/learning.py)
 
-def unbench(userid):
-    def maketime(injurydate):
+def unbench(u):
+    def maketime(u[ID]):
         import time
         from time import mktime
         import datetime
         returnTime=time.gmtime()[:3]+(0,0,0,0,0,0)
-        new=injurydate[injurydate.find("-")+1:]
+        new=u[ID][u[ID].find("-")+1:]
         #make a time datetime object
         injurydate=(datetime.datetime(
         #Day
@@ -18,9 +18,9 @@ def unbench(userid):
         [0,'Jan','Feb','Mar','Apr','May','Jun','Jul',
          'Aug','Sep','Oct','Nov','Dec'].index(new[:new.find("-")]),
         #year
-        int(injurydate[:injurydate.find("-")]))).timetuple()
+        int(u[ID][:u[ID].find("-")]))).timetuple()
         #Convert to days
-        days=(mktime(returnTime)-mktime(injurydate))/86400
+        days=(mktime(returnTime)-mktime(u[ID]))/86400
         if days<1:
             return 13
         if days<3:
@@ -34,31 +34,31 @@ def unbench(userid):
         else:
             return 5
 
-    thisRow=['RegID',
-             'Q7',
-             'Q4',
-             'Q5',
-             'Q6',
-            'Q500',
-             'Q21B',
-             'Q21C',
-             'Q21D',
-            'Q21E',
-             'Q21F',
-             'Q21G',
-             'Q21H',
-            'Q21I',
-             'Q21J',
-             'Q21K',
-             'Q21L',
-            'Q21M',
-             'Q21N',
-             'Q21O',
-             'Q20',
-            'Q18',
-             'Q22',
-             maketime(injurydate),
-             'Q65']
+    thisRow=['u[0]',
+             'u[ID]',
+             'u[1]',
+             'u[2]',
+             'u[3]',
+            'Male',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             '',
+            '',
+             '',
+             '',
+             'concussion',
+            'head/face',
+             '',
+             maketime(u[ID]),
+             '']
     
     import getBucket from learning.py
     bucket=getBucket(thisRow)

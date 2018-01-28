@@ -121,24 +121,39 @@ class App extends Component {
     return(
 
       <div className="App">
+      <Sidebar {...sidebarProps}>
+
+      <MaterialTitlePanel>
+
+      </MaterialTitlePanel>
+
+
+
+
+      </Sidebar>
+      
         <header className="App-header">
+        <HamburgerButton className="App-menuButton"
+         open={this.state.open} onClick={this.toggleOpen}
+         width={40}
+          height={40}
+          strokeWidth={1}
+          rotate={0}
+          color='white'
+          borderRadius={0}
+           animationDuration={0.5}>Menu</HamburgerButton>
 
           <h1 className="App-title">Injury Monitor</h1>
         </header>
-        <Sidebar {...sidebarProps}>
-        <MaterialTitlePanel>
-         
-        </MaterialTitlePanel>
-        <HamburgerButton className="App-menuButton" open={this.state.open} onClick={this.toggleOpen}>Menu</HamburgerButton>
-  
 
-      
-        </Sidebar>
+
         <h1> Player Profile</h1>
         <Player playerName='Adrian Peterson' curInjury='Mild Concussion'/>
-      </div>   
-      
-      
+
+      </div>
+
+
+
 
 
     );
@@ -155,9 +170,9 @@ export default App;
         </header>
         <h1> Player Profile</h1>
         <Player/>
-      </div>   
-      
-      
+      </div>
+
+
 
 
       <div className="App">
@@ -170,7 +185,7 @@ export default App;
             <button onClick={this.toggleOpen}>Menu</button>
           </MaterialTitlePanel>
         </Sidebar>
-    
+
       </div>
 
 */
