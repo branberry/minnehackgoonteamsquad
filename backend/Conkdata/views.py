@@ -50,6 +50,7 @@ def createUser(request):
 
 @csrf_exempt
 def createInjury(request):
+     import unbench.py
      reader = codecs.getreader("utf-8")
      data = request.read().decode('utf-8')
      data = json.loads(data)
@@ -57,4 +58,5 @@ def createInjury(request):
      print(getBenchTime(u['age'],u['height'],u['weight'],data['symptoms']))
      i = Injury(user_id=data['user_id'],injury_type=data['injury_type'],symptoms=data['symptoms'],bench_date=datetime.datetime.now(),unbench_date=None)
      i.save()
+     unbench(u,i)
      return HttpResponse("hi")
