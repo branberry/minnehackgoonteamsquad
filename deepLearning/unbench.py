@@ -59,6 +59,7 @@ def unbench(userid):
              'Q22',
              maketime(injurydate),
              'Q65']
+    
     import getBucket from learning.py
     bucket=getBucket(thisRow)
     #append to bucket
@@ -89,7 +90,6 @@ def unbench(userid):
     with open(bucketDict[bucket],'a+') as csvout:
                         spamwriter = csv.DictWriter(csvout, fieldnames=fields)
                         spamwriter.writerow(thisRow)
-    with open(#main csv,'a+') as csvout:
+    with open('MasterConcussionData.csv','a+') as csvout:
                         spamwriter = csv.DictWriter(csvout, fieldnames=fields)
                         spamwriter.writerow(thisRow)
-    #append to main csv
