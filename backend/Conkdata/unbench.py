@@ -46,7 +46,7 @@ def unbench(u,i):
              '']
     
     import getBucket from learning.py
-    bucket=getBucket(thisRow)
+    bucket=getBucket(thisRow[3:6])
     #append to bucket
     bucketDict=[0:"15_short_light.csv",
     1:"15_short_heavy.csv",
